@@ -1,0 +1,30 @@
+.recommented-video{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.side-video-list{
+    display: flex;
+
+    gap: 20px;
+}
+.side-video-list img{
+    width: 200px;
+    border:none;
+    border-radius: 10px;
+}
+.side-video-info{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.side-video-info h3{
+  font-size: 15px;
+  padding-bottom: 10px;
+}
+.side-title{
+    font-weight: bold;
+    font-size: 15px;
+    color: black;
+}

@@ -1,0 +1,15 @@
+.main{
+    display: flex;
+}
+.container{
+    width: 100%;
+    background-color: aliceblue;
+    padding: 20px 2% 20px 17px;
+    margin-top: 60px;
+}
+@media only screen and (max-width: 582px) {
+    .main{
+     width: 100%;
+    }
+     
+  }
