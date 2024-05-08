@@ -23,7 +23,7 @@ const Feed = ({category,apidata}) => {
 
 const fetchData = async () => {
   try {
-    const apiKey = API_KEY;
+    const apiKey = process.env.REACT_APP_API_KEY;
     const url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=100&regionCode=IN&videoCategoryId=${category}&key=${apiKey}`
     const response = await fetch(url);
     if (!response.ok) {
