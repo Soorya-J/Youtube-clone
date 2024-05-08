@@ -10,7 +10,7 @@ import thumbnail7 from '../../assets/thumbnail7.png'
 import thumbnail8 from '../../assets/thumbnail8.png'
 import thumbnailsmall_one from '../../assets/thumbnailsmall-one.webp'
 import { Link } from 'react-router-dom'
-import { API_KEY, valueConverter,timeAgo } from '../../data'
+import { valueConverter,timeAgo } from '../../data'
 
 
 
@@ -23,7 +23,7 @@ const Feed = ({category,apidata}) => {
 
 const fetchData = async () => {
   try {
-    const apiKey = process.env.REACT_APP_API_KEY;
+    const apiKey = import.meta.env.VITE_API_KEY;
     const url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=100&regionCode=IN&videoCategoryId=${category}&key=${apiKey}`
     const response = await fetch(url);
     if (!response.ok) {

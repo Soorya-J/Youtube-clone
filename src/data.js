@@ -1,5 +1,3 @@
-
- 
 export const valueConverter = (value)=>{
     if (value>=1000000){
         return(Math.floor(value = value/1000000)) + "M"

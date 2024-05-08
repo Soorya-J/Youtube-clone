@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './Playvideo.css'
 import video1 from '../../assets/video.mp4'
 import tom from '../../assets/tom.png'
-import { API_KEY ,valueConverter,timeAgo } from '../../data'
+import { valueConverter,timeAgo } from '../../data'
 import { useParams } from 'react-router-dom'
 
 const Playvideo = () => {
@@ -18,13 +18,15 @@ const [channeldata,setChanneldata] = useState();
 
 const[commentdata,setCommentdata] = useState([])
 
+const API = import.meta.env.VITE_API_KEY;
+
 
 const toggleDescription = () => {
   setShowFullDescription(!showFullDescription);
 };
 
 const fetchVideodata = async () => {
-    const videourl = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videoId}&key=${API_KEY}`
+    const videourl = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videoId}&key=${API}`
     await fetch(videourl).then(res=>res.json()).then(data => setApidata(data.items[0]))
 }
 
@@ -33,7 +35,7 @@ useEffect(()=>{
 },[videoId])
 
 const fetchChanneldata = async ()=>{
-   const channelUrl = `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${apidata.snippet.channelId}&key=${API_KEY}`
+   const channelUrl = `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${apidata.snippet.channelId}&key=${API}`
    await fetch (channelUrl).then(response=>response.json()).then(data=>setChanneldata(data.items[0]))
 }
  useEffect(()=>{
@@ -41,7 +43,7 @@ const fetchChanneldata = async ()=>{
  },[apidata])
  
  const fetchcomments = async ()=>{
- const comment_url = `https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&videoId=${videoId}&key=${API_KEY}`
+ const comment_url = `https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&videoId=${videoId}&key=${API}`
  await fetch(comment_url).then((res)=>res.json()).then( data=>setCommentdata(data.items))
  }
  useEffect(()=>{
